@@ -271,7 +271,7 @@ exports.order = function (req, res) {
 		console.log(config);
 	    paypalPayment.transactions[0].amount.total = req.query.order_amount;
 	    paypalPayment.redirect_urls.return_url = "http://localhost:" + (config.port ? config.port : 3000) + "/orderExecute?order_id=" + order_id;
-	    paypalPayment.redirect_urls.cancel_url = "http://localhost:" + (config.port ? config.port : 3000) + "/?status=cancel&order_id" + order_id;
+	    paypalPayment.redirect_urls.cancel_url = "http://localhost:" + (config.port ? config.port : 3000) + "/?status=cancel&order_id=" + order_id;
 	    paypalPayment.transactions[0].description = req.session.desc;
 	    paypal.payment.create(paypalPayment, {}, function (err, resp) {
 		    if (err) {
